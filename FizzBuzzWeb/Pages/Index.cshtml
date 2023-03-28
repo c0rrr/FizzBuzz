@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Fizz Buzz";
+}
+<h1 class="display-4">Welcome @Model.Name</h1>
+<form method="post">
+    <div class="form-group">
+        <label for=exampleInputNumber asp-for="FizzBuzz.Number"></label><br />
+        <input type="number" class="form-control" asp-for="FizzBuzz.Number">
+        <span asp-validation-for="FizzBuzz.Number" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Zatwierdź</button>
+</form>
+@if (Model.FizzBuzz.Number % 3 == 0 & Model.FizzBuzz.Number % 5 == 0)
+{
+    <div class="alert alert-success" role="alert">
+        FizzBuzz
+    </div>
+}
+else if (Model.FizzBuzz.Number % 5 == 0)
+{
+    <div class="alert alert-success" role="alert">
+        Buzz
+    </div>
+}
+else if (Model.FizzBuzz.Number % 3 == 0)
+{
+    <div class="alert alert-success" role="alert">
+        Fizz
+    </div>
+}
+else if (Model.FizzBuzz.Number != null)
+{
+    <div class="alert alert-danger" role="alert">
+        Liczba: @Model.FizzBuzz.Number nie spełnia kryteriów FizzBuzz
+    </div>
+}
