@@ -12,27 +12,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Zatwierdź</button>
 </form>
-@if (Model.FizzBuzz.Number % 3 == 0 & Model.FizzBuzz.Number % 5 == 0)
+@if (@TempData["AlertMessage"] != null)
 {
     <div class="alert alert-success" role="alert">
-        FizzBuzz
-    </div>
-}
-else if (Model.FizzBuzz.Number % 5 == 0)
-{
-    <div class="alert alert-success" role="alert">
-        Buzz
-    </div>
-}
-else if (Model.FizzBuzz.Number % 3 == 0)
-{
-    <div class="alert alert-success" role="alert">
-        Fizz
-    </div>
-}
-else if (Model.FizzBuzz.Number != null)
-{
-    <div class="alert alert-danger" role="alert">
-        Liczba: @Model.FizzBuzz.Number nie spełnia kryteriów FizzBuzz
+        @TempData["AlertMessage"]
     </div>
 }
