@@ -18,6 +18,18 @@ namespace FizzBuzzWeb.Pages
             _logger = logger;
         }
 
+        public void FizzBuzzCheck()
+        {
+            if (FizzBuzz.Number % 3 == 0 & FizzBuzz.Number % 5 == 0)
+                TempData["AlertMessage"] = "FizzBuzz";
+            else if (FizzBuzz.Number % 5 == 0)
+                TempData["AlertMessage"] = "Buzz";
+            else if (FizzBuzz.Number % 3 == 0)
+                TempData["AlertMessage"] = "Fizz";
+            else if (FizzBuzz.Number != null)
+                TempData["AlertMessage"] = "Liczba: " + FizzBuzz.Number + " nie spełnia kryteriów FizzBuzz";
+        }
+
         public void OnGet()
         {
             if (string.IsNullOrWhiteSpace(Name))
@@ -29,14 +41,7 @@ namespace FizzBuzzWeb.Pages
         {
             if (!ModelState.IsValid)
             {
-                if (FizzBuzz.Number % 3 == 0 & FizzBuzz.Number % 5 == 0)
-                    TempData["AlertMessage"] = "FizzBuzz";
-                else if (FizzBuzz.Number % 5 == 0)
-                    TempData["AlertMessage"] = "Buzz";
-                else if (FizzBuzz.Number % 3 == 0)
-                    TempData["AlertMessage"] = "Fizz";
-                else if (FizzBuzz.Number != null)
-                    TempData["AlertMessage"] = "Liczba: "+ FizzBuzz.Number +" nie spełnia kryteriów FizzBuzz";
+                FizzBuzzCheck();
 
                 return Page();
             }
